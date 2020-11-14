@@ -1,0 +1,99 @@
+﻿@model GoldenChicken.Core.Models.Food
+
+@{
+    ViewBag.Title = "غذا ها";
+}
+<input type="hidden" id="nav_active" value="food_control">
+<input type="hidden" id="nav_item_active" value="foods">
+@{
+    if (ViewBag.Message != null)
+    {
+        <div class="alert alert-danger">
+            <strong>خطا!</strong> @ViewBag.Message
+        </div>
+    }
+}
+<div class="col-lg-12y">
+    <div class="card card-custom gutter-b">
+        <div class="card-header">
+            <h3 class="card-title">
+                ویرایش غذا
+            </h3>
+        </div>
+        @using (Html.BeginForm("Edit", "Foods", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="card-body">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Image)
+            @Html.HiddenFor(model => model.InsertDate)
+            @Html.HiddenFor(model => model.InsertUser)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, new { })
+                <div class="col-md-5">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control " } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "form-text text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.FoodTypeId, "دسته بندی", new { })
+                <div class="col-md-5">
+                    @Html.DropDownList("FoodTypeId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FoodTypeId, "", new { @class = "form-text text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-label">تصویر</label>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="image-input image-input-outline" id="food-image">
+                        <div class="image-input-wrapper" style="background-image: url(/Files/FoodImages/Thumb/@Model.Image)"></div>
+
+                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="آپلود تصویر">
+                            <i class="fa fa-pen icon-sm text-muted"></i>
+                            <input type="file" name="FoodImage" accept=".png, .jpg, .jpeg" />
+                            <input type="hidden" name="food_image_remove" />
+                        </label>
+
+                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="حذف تصویر">
+                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShortDescription, new { })
+                @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "form-control " } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, new { })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control " } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "form-text text-danger" })
+            </div>
+        </div>
+            <div class="card-footer">
+                <a href="@Url.Action("Index")" class="btn btn-secondary">انصراف</a>
+                <input type="submit" value="ثبت" class="btn btn-primary mr-2" />
+            </div>
+        }
+    </div>
+</div>
+<style>
+    .image-input .image-input-wrapper {
+        width: 200px;
+    }
+</style>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/ckeditor/adapters/jquery.js"></script>
+    <script>
+        $(function () {
+            $('#Description').ckeditor();
+
+        });
+        new KTImageInput('food-image');
+    </script>
+}
