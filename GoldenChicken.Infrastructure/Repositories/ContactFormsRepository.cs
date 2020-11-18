@@ -17,10 +17,10 @@ namespace GoldenChicken.Infrastructure.Repositories
             _context = context;
             _logger = logger;
         }
-        public ContactForm GetContactForm(int id)
-        {
-            return _context.ContactForms.Include(c => c.Service).FirstOrDefault(c=>c.Id == id);
-        }
+        //public ContactForm GetContactForm(int id)
+        //{
+        //    return _context.ContactForms.Include(c => c.Service).FirstOrDefault(c=>c.Id == id);
+        //}
         public List<Service> GetServices()
         {
             return _context.Services.Where(e=>e.IsDeleted == false).ToList();

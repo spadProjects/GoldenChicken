@@ -4,16 +4,100 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GoldenChicken.Core.Models;
+using GoldenChicken.Core.Utility;
+using GoldenChicken.Infrastructure.Repositories;
+using GoldenChicken.Web.ViewModels;
 
 namespace GoldenChicken.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly StaticContentDetailsRepository _contentRepo;
+        private readonly GalleriesRepository _galleryRepo;
+        private readonly TestimonialsRepository _testimonialRepo;
+        private readonly ContactFormsRepository _contactFormRepo;
+
+        public HomeController(StaticContentDetailsRepository contentRepo, GalleriesRepository galleryRepo, TestimonialsRepository testimonialRepo, ContactFormsRepository contactFormRepo)
+        {
+            _contentRepo = contentRepo;
+            _galleryRepo = galleryRepo;
+            _testimonialRepo = testimonialRepo;
+            _contactFormRepo = contactFormRepo;
+        }
         public ActionResult Index()
         {
             return View();
         }
+        public ActionResult Navbar()
+        {
+            ViewBag.Phone = _contentRepo.GetStaticContentDetail((int) StaticContents.Phone).ShortDescription;
+            return PartialView();
+        }
+        public ActionResult HomeSlider()
+        {
+            var sliderContent = _contentRepo.GetContentByTypeId((int)StaticContentTypes.Slider);
+            return PartialView(sliderContent);
+        }
+        public ActionResult Gallery()
+        {
+            var galleryContent = _galleryRepo.GetAll();
+            return PartialView(galleryContent);
+        }
+        public ActionResult CompanyHistory()
+        {
+            var content = _contentRepo.GetContentByTypeId((int)StaticContentTypes.CompanyHistory).FirstOrDefault();
+            return PartialView(content);
+        }
+        public ActionResult Testimonials()
+        {
+            var content = _testimonialRepo.GetAll();
+            return PartialView(content);
+        }
+        public ActionResult GallerySlider()
+        {
+            var galleryContent = _galleryRepo.GetAll();
+            return PartialView(galleryContent);
+        }
+        public ActionResult ContactUsForm()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        public ActionResult ContactUsForm(ContactForm contactForm)
+        {
+            if (ModelState.IsValid)
+            {
+                _contactFormRepo.Add(contactForm);
+                return RedirectToAction("ContactUsSummary");
+            }
+            return View(contactForm);
+        }
 
+        public ActionResult ContactUsSummary()
+        {
+            return View();
+        }
+        public ActionResult Footer()
+        {
+            var footerContent = new FooterViewModel();
+            footerContent.Map = _contentRepo.Get((int) StaticContents.Map);
+            footerContent.Email = _contentRepo.Get((int) StaticContents.Email);
+            footerContent.Address = _contentRepo.Get((int) StaticContents.Address);
+            footerContent.Phone = _contentRepo.Get((int) StaticContents.Phone);
+            footerContent.Youtube = _contentRepo.Get((int) StaticContents.Youtube);
+            footerContent.Instagram = _contentRepo.Get((int) StaticContents.Instagram);
+            footerContent.Twitter = _contentRepo.Get((int) StaticContents.Twitter);
+            footerContent.Pinterest = _contentRepo.Get((int) StaticContents.Pinterest);
+            footerContent.Facebook = _contentRepo.Get((int) StaticContents.Facebook);
+            return PartialView(footerContent);
+        }
+        [Route("Gallery")]
+        public ActionResult GalleryPage()
+        {
+            var galleryContent = _galleryRepo.GetAll();
+            return View(galleryContent);
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

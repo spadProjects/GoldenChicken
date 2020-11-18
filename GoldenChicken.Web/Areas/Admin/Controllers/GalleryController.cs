@@ -5,6 +5,7 @@ using GoldenChicken.Core.Models;
 using GoldenChicken.Infrastructure.Repositories;
 using System.Web;
 using System.IO;
+using GoldenChicken.Infrastructure.Helpers;
 
 namespace GoldenChicken.Web.Areas.Admin.Controllers
 {
@@ -33,8 +34,23 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
                 #region Upload Image
                 if (GalleryImage != null)
                 {
+                    // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(GalleryImage.FileName);
-                    GalleryImage.SaveAs(Server.MapPath("/Files/GalleryImages/" + newFileName));
+                    GalleryImage.SaveAs(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName));
+
+                    // Resizing Image
+                    ImageResizer imageCut = new ImageResizer(1200,1200,true);
+
+                    imageCut.Resize(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/GalleryImages/" + newFileName));
+
+                    ImageResizer thumb = new ImageResizer(600, 600, true);
+
+                    thumb.Resize(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/GalleryImages/Thumb/" + newFileName));
+
+                    // Deleting Temp Image
+                    System.IO.File.Delete(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName));
                     image.Image = newFileName;
                 }
                 #endregion
@@ -72,8 +88,26 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
                     if (System.IO.File.Exists(Server.MapPath("/Files/GalleryImages/" + gallery.Image)))
                         System.IO.File.Delete(Server.MapPath("/Files/GalleryImages/" + gallery.Image));
 
+                    if (System.IO.File.Exists(Server.MapPath("/Files/GalleryImages/Thumb/" + gallery.Image)))
+                        System.IO.File.Delete(Server.MapPath("/Files/GalleryImages/Thumb/" + gallery.Image));
+
+                    // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(GalleryImage.FileName);
-                    GalleryImage.SaveAs(Server.MapPath("/Files/GalleryImages/" + newFileName));
+                    GalleryImage.SaveAs(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName));
+
+                    // Resizing Image
+                    ImageResizer imageCut = new ImageResizer(1200, 1200, true);
+
+                    imageCut.Resize(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/GalleryImages/" + newFileName));
+
+                    ImageResizer thumb = new ImageResizer(600, 600, true);
+
+                    thumb.Resize(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/GalleryImages/Thumb/" + newFileName));
+
+                    // Deleting Temp Image
+                    System.IO.File.Delete(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName));
                     gallery.Image = newFileName;
                 }
                 #endregion

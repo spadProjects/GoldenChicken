@@ -8,15 +8,18 @@ namespace GoldenChicken.Core.Models
     public class Testimonial : IBaseEntity
     {
         public int Id { get; set; }
-        [Display(Name = "عنوان")]
+        [Display(Name = "نام")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string Title { get; set; }
+        [Display(Name = "نقش")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        public string Role { get; set; }
+        [Display(Name = "تصویر")]
+        public string Image { get; set; }
         [Display(Name = "توضیح")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
-        [Display(Name = "امتیاز")]
-        public int? Rate { get; set; }
         public string InsertUser { get; set; }
         public DateTime? InsertDate { get; set; }
         public string UpdateUser { get; set; }

@@ -38,7 +38,7 @@
         .Columns(columns =>
         {
             columns.Bound(model => model.Title);
-            columns.Bound(model => model.ShortDescription);
+            columns.Bound(model => model.StaticContentType.Name).Title("دسته");
             columns.Bound(item => @item.Id).IncludeInMenu(false).Sortable(false).Title("دستورات").Filterable(false).Groupable(false).Template(
                 @<text>
                     <a class='btn btn-sm btn-clean btn-icon mr-2' href="/Admin/StaticContentDetails/Edit/@item.Id"><i class='far fa-edit text-primary'></i></a>

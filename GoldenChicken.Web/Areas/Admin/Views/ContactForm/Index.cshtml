@@ -38,7 +38,6 @@
 .Columns(columns =>
 {
     columns.Bound(model => model.Name);
-    columns.Bound(model => model.Phone);
     columns.Bound(model => model.Email);
 
     columns.Bound(item => @item.Id).IncludeInMenu(false).Sortable(false).Title("دستورات").Filterable(false).Groupable(false).Template(

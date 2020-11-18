@@ -20,7 +20,6 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
         }
         public ActionResult Create()
         {
-            ViewBag.ServiceId = new SelectList(_repo.GetServices(), "Id", "Title");
             return PartialView();
         }
         [HttpPost]
@@ -32,7 +31,6 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
                 _repo.Add(contactForm);
                 return RedirectToAction("Index");
             }
-            ViewBag.ServiceId = new SelectList(_repo.GetServices(), "Id", "Title");
             return View(contactForm);
         }
 
@@ -47,7 +45,6 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ServiceId = new SelectList(_repo.GetServices(), "Id", "Title",contactForm.ServiceId);
             return PartialView(contactForm);
         }
 
@@ -60,7 +57,6 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
                 _repo.Update(contactForm);
                 return RedirectToAction("Index");
             }
-            ViewBag.ServiceId = new SelectList(_repo.GetServices(), "Id", "Title", contactForm.ServiceId);
             return View(contactForm);
         }
         public ActionResult Delete(int? id)
@@ -69,7 +65,7 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ContactForm contactForm = _repo.GetContactForm(id.Value);
+            ContactForm contactForm = _repo.Get(id.Value);
             if (contactForm == null)
             {
                 return HttpNotFound();

@@ -1,61 +1,112 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
+
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="#">
+    <meta name="description" content="#">
+    <title>جوجه طلایی | @ViewBag.Title</title>
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="#">
+    <link rel="apple-touch-icon-precomposed" href="#">
+    <link rel="shortcut icon" href="#">
+    <!-- Bootstrap -->
+    <link href="/Content/client/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fontawesome -->
+    <link href="/Content/client/css/font-awesome.css" rel="stylesheet">
+    <!-- Flaticons -->
+    <link href="/Content/client/css/font/flaticon.css" rel="stylesheet">
+    <!-- Swiper Slider -->
+    <link href="/Content/client/css/swiper.min.css" rel="stylesheet">
+    <!-- Range Slider -->
+    <link href="/Content/client/css/ion.rangeSlider.min.css" rel="stylesheet">
+    <!-- magnific popup -->
+    <link href="/Content/client/css/magnific-popup.css" rel="stylesheet">
+    <!-- Nice Select -->
+    <link href="/Content/client/css/nice-select.css" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link href="/Content/client/css/style.css" rel="stylesheet">
+    <!-- Custom Responsive -->
+    <link href="/Content/client/css/responsive.css" rel="stylesheet">
+    <link href="/Content/client/css/style.min.css" rel="stylesheet">
 
-    <!--This bundle was moved by the Telerik VS Extensions for compatibility reasons-->
-    <link href="@Url.Content("~/Content/kendo/2020.1.114/kendo.common-material.min.css")" rel="stylesheet" type="text/css" />
-    <link href="~/Content/kendo/2020.1.114/kendo.material.mobile.min.css" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/kendo/2020.1.114/kendo.material.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2020.1.114/kendo.rtl.min.css")" rel="stylesheet" type="text/css" />
-    <script src="@Url.Content("~/Scripts/kendo/2020.1.114/jquery.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/kendo/2020.1.114/jszip.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/kendo/2020.1.114/kendo.all.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/kendo/2020.1.114/kendo.aspnetmvc.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap" rel="stylesheet">
 
-    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
-    <script src="/Scripts/kendo/2020.1.114/JalaliDate.js"></script>
-    <script src="/Scripts/kendo/2020.1.114/kendo.web.js"></script>
-    <script src="/Scripts/kendo/2020.1.114/fa-IR.js"></script>
-    <script src="/Scripts/kendo/2020.1.114/kendo.calendar.fa.js"></script>
-    <script src="/Scripts/kendo/2020.1.114/kendo.datepicker.fa.js"></script>
 </head>
-<body class="k-rtl">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+<body>
+@Html.Action("Navbar","Home")
+@RenderBody()
+<!-- footer -->
+<div class="footer-top section-padding bg-black">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-6 mb-sm-20">
+                <div class="icon-box">
+                    <span class="text-light-green"><i class="flaticon-credit-card-1"></i></span>
+                    <span class="text-custom-white">پرداخت<br>ایمن</span>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+
+            <div class="col-md-3 col-sm-4 col-6 mb-sm-20">
+                <div class="icon-box">
+                    <span class="text-light-green"><i class="flaticon-help"></i></span>
+                    <span class="text-custom-white">پشتیبانی <br>24 ساعت 7 روز</span>
+                </div>
             </div>
+            <div class="col-md-3 col-sm-4 col-6">
+                <div class="icon-box">
+                    <span class="text-light-green"><i class="flaticon-truck"></i></span>
+                    <span class="text-custom-white">ارسال <br>رایگان </span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-6">
+                <div class="icon-box">
+                    <span class="text-light-green"><i class="flaticon-guarantee"></i></span>
+                    <span class="text-custom-white">تضمین<br>بهترین قیمت</span>
+                </div>
+            </div>
+
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+</div>
+@Html.Action("Footer","Home")
+<!-- Place all Scripts Here -->
+<!-- jQuery -->
 
-    
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+<script src="/Content/client/js/jquery.min.js"></script>
+<!-- Popper -->
+
+<script src="/Content/client/js/popper.min.js"></script>
+<!-- Bootstrap -->
+<script src="/Content/client/js/bootstrap.min.js"></script>
+<!-- Range Slider -->
+<script src="/Content/client/js/ion.rangeSlider.min.js"></script>
+<!-- Swiper Slider -->
+<script src="/Content/client/js/swiper.min.js"></script>
+<!-- Nice Select -->
+<script src="/Content/client/js/jquery.nice-select.min.js"></script>
+<!-- magnific popup -->
+<script src="/Content/client/js/jquery.magnific-popup.min.js"></script>
+<!-- Maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnd9JwZvXty-1gHZihMoFhJtCXmHfeRQg"></script>
+<!-- sticky sidebar -->
+<script src="/Content/client/js/sticksy.js"></script>
+<script src="/Content/client/js/navbar.js"></script>
+
+<script src="/Content/client/js/munchbox.js"></script>
+<!-- Munch Box Js -->
+
+
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
 </body>
+
+
 </html>

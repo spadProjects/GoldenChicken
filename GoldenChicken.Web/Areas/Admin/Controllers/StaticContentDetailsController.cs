@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using GoldenChicken.Core.Models;
+using GoldenChicken.Core.Utility;
 using GoldenChicken.Infrastructure;
 using GoldenChicken.Infrastructure.Helpers;
 using GoldenChicken.Infrastructure.Repositories;
@@ -44,17 +45,26 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
                 #region Upload Image
                 if (StaticContentDetailImage != null)
                 {
+                    // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(StaticContentDetailImage.FileName);
-                    StaticContentDetailImage.SaveAs(Server.MapPath("/Files/StaticContentImages/Image/" + newFileName));
+                    StaticContentDetailImage.SaveAs(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName));
 
-                    ImageResizer thumb = new ImageResizer();
-                    thumb.Resize(Server.MapPath("/Files/StaticContentImages/Image/" + newFileName),
-                        Server.MapPath("/Files/StaticContentImages/Thumb/" + newFileName));
+                    // Resizing Image
+                    ImageResizer image = new ImageResizer();
+                    if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.Slider)
+                        image = new ImageResizer(1020, 700, true);
+                    if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.CompanyHistory)
+                        image = new ImageResizer(1000, 1000, true);
+
+                    image.Resize(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/StaticContentImages/Image/" + newFileName));
+
+                    // Deleting Temp Image
+                    System.IO.File.Delete(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName));
 
                     staticContentDetail.Image = newFileName;
                 }
                 #endregion
-
                 _repo.Add(staticContentDetail);
 
                 return RedirectToAction("Index");
@@ -91,14 +101,23 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
                     if (System.IO.File.Exists(Server.MapPath("/Files/StaticContentImages/Image/" + staticContentDetail.Image)))
                         System.IO.File.Delete(Server.MapPath("/Files/StaticContentImages/Image/" + staticContentDetail.Image));
 
-                    if (System.IO.File.Exists(Server.MapPath("/Files/StaticContentImages/Thumb/" + staticContentDetail.Image)))
-                        System.IO.File.Delete(Server.MapPath("/Files/StaticContentImages/Thumb/" + staticContentDetail.Image));
-
+                    // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(StaticContentDetailImage.FileName);
-                    StaticContentDetailImage.SaveAs(Server.MapPath("/Files/StaticContentImages/Image/" + newFileName));
+                    StaticContentDetailImage.SaveAs(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName));
 
-                    ImageResizer thumb = new ImageResizer();
-                    thumb.Resize(Server.MapPath("/Files/StaticContentImages/Image/" + newFileName), Server.MapPath("/Files/StaticContentImages/Thumb/" + newFileName));
+                    // Resizing Image
+                    ImageResizer image = new ImageResizer();
+                    if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.Slider)
+                        image = new ImageResizer(1020, 700, true);
+                    if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.CompanyHistory)
+                        image = new ImageResizer(1000, 1000, true);
+
+                    image.Resize(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/StaticContentImages/Image/" + newFileName));
+
+                    // Deleting Temp Image
+                    System.IO.File.Delete(Server.MapPath("/Files/StaticContentImages/Temp/" + newFileName));
+
                     staticContentDetail.Image = newFileName;
                 }
                 #endregion

@@ -1,0 +1,31 @@
+﻿@model List<GoldenChicken.Core.Models.Gallery>
+@{
+    ViewBag.Title = "گالری تصاویر";
+}
+<section>
+    <div class="container">
+        <div class="section-header-left mt-5">
+            <h3 class="text-light-black header-title title">
+                <span class="text-dark">گالری</span>
+            </h3>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-12 p-0">
+                <div class="gallery-box padding-10">
+                    <ul class="gallery-img">
+                        @foreach (var item in Model)
+                        {
+                            <li>
+                                <a class="image-popup" href="/Files/GalleryImages/@item.Image"
+                                   title="@item.Title">
+                                    <img src="/Files/GalleryImages/@item.Image" class="img-fluid full-width"
+                                         alt="@item.Title"/>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

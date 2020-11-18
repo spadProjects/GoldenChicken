@@ -1,0 +1,171 @@
+﻿@model GoldenChicken.Web.ViewModels.FooterViewModel
+<footer class="section-padding bg-light-theme pt-0 u-line bg-black">
+    @Html.Action("GallerySlider", "Home")
+    <div class="container-fluid contact-footer">
+        <div class="row">
+            <div class="col-md-6 pt-5">
+                <div class="section-header-left">
+                    <h3 class="text-light-black header-title title">
+                        <span class="text-dark">ارتباط با ما</span>
+                    </h3>
+                </div>
+                @Html.Action("ContactUsForm", "Home")
+            </div>
+            <div class="col-md-6 mt-5 mb-3">
+                @Html.Raw(Model.Map.Description)
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-xl col-lg-4 col-md-4 col-sm-6">
+                <div class="footer-contact">
+                    <h6 class="text-custom-white">راهنمایی</h6>
+                    <ul>
+                        <li class="fw-600">
+                            <span class="text-light-white">تماس با ما</span>
+                            <a href="tel:"
+                               class="text-custom-white"></a>
+                        </li>
+                        <li class="fw-600">
+                            <span class="text-light-white">@Model.Email.Title </span>
+                            <a href="mailto:@Model.Email.ShortDescription"
+                               class="text-custom-white"> @Model.Email.ShortDescription</a>
+                        </li>
+                        <li class="fw-600">
+                            <span class="text-light-white">@Model.Phone.Title </span>
+                            <a href="tel:@Model.Phone.ShortDescription"
+                               class="text-custom-white">
+                                 @Model.Phone.ShortDescription
+                            </a>
+                        </li>
+                        <li class="fw-600">
+                            <span class="text-light-white">@Model.Address.Title </span>
+                            <a href="address:@Model.Address.ShortDescription"
+                               class="text-custom-white">
+                                 @Model.Address.ShortDescription
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-xl col-lg-4 col-md-4 col-sm-6">
+                <div class="footer-links">
+                    <h6 class="text-custom-white">ما را بشناسید</h6>
+                    <ul>
+                        <li>
+                            <a href="/" class="text-light-white fw-600">صفحه اصلی</a>
+                        </li>
+                        <li>
+                            <a href="/AboutUs" class="text-light-white fw-600">درباره ما</a>
+                        </li>
+                        <li>
+                            <a href="/Gallery" class="text-light-white fw-600">گالری تصاویر</a>
+                        </li>
+                        <li>
+                            <a href="/ContactUs" class="text-light-white fw-600">تماس با ما</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            @*<div class="col-xl col-lg-4 col-md-4 col-sm-6">
+                <div class="footer-links">
+                    <h6 class="text-custom-white">سوالات متداول</h6>
+                    <ul>
+                        <li>
+                            <a href="#" class="text-light-white fw-600">جزییات اکانت</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-light-white fw-600">تاریخچه سفارشات</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-light-white fw-600">ورود</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-light-white fw-600">سفارش</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl col-lg-4 col-md-4 col-sm-6">
+                <div class="footer-links">
+                    <h6 class="text-custom-white">همکاری با ما</h6>
+                    <ul>
+                        <li>
+                            <a href="#" class="text-light-white fw-600">پیشنهاد</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-light-white fw-600">ثبت رستوران</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-light-white fw-600">ساخت اکانت</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-light-white fw-600">راهنمایی</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>*@
+
+            @*<div class="col-xl col-lg-4 col-md-4 col-sm-6">
+                <div class="footer-contact">
+                    <h6 class="text-custom-white">خبرنامه</h6>
+                    <form class="subscribe_form">
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-submit" name="email"
+                                   placeholder="ایمیل خود را وارد نمایید">
+                            <span class="input-group-btn">
+                                <button class="btn btn-second btn-submit" type="button">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>*@
+            <div class="col-md-12">
+                <div class="ft-social-media">
+                    <h6 class="text-center text-light-black">ما را دنبال کنید</h6>
+                    <ul>
+                        <li>
+                            <a href="@Model.Facebook.Link"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li>
+                            <a href="@Model.Twitter.Link"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="@Model.Instagram.Link"><i class="fab fa-instagram"></i></a>
+                        </li>
+                        <li>
+                            <a href="@Model.Pinterest.Link"><i class="fab fa-pinterest-p"></i></a>
+                        </li>
+                        <li>
+                            <a href="@Model.Youtube.Link"><i class="fab fa-youtube"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="copyright bg-black">
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <div class="col-lg-12">
+                <div class="copyright-text">
+                    <span class="text-light-white">
+                        © طراحی شده توسط
+                        <a href="https://www.spad.co/"
+                           class="text-light-white">اسپاد</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer -->

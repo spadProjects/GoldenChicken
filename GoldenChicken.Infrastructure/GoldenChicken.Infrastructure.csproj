@@ -78,6 +78,22 @@
     <Compile Include="Migrations\202011091109230_Added-Gallery-Video.Designer.cs">
       <DependentUpon>202011091109230_Added-Gallery-Video.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011180948108_Updated-testimonials.cs" />
+    <Compile Include="Migrations\202011180948108_Updated-testimonials.Designer.cs">
+      <DependentUpon>202011180948108_Updated-testimonials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011181141109_Updated-Contact-Form.cs" />
+    <Compile Include="Migrations\202011181141109_Updated-Contact-Form.Designer.cs">
+      <DependentUpon>202011181141109_Updated-Contact-Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011181143083_Updated-Contact-Form2.cs" />
+    <Compile Include="Migrations\202011181143083_Updated-Contact-Form2.Designer.cs">
+      <DependentUpon>202011181143083_Updated-Contact-Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011181223559_Updated-Contact-Form3.cs" />
+    <Compile Include="Migrations\202011181223559_Updated-Contact-Form3.Designer.cs">
+      <DependentUpon>202011181223559_Updated-Contact-Form3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,6 +140,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011091109230_Added-Gallery-Video.resx">
       <DependentUpon>202011091109230_Added-Gallery-Video.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011180948108_Updated-testimonials.resx">
+      <DependentUpon>202011180948108_Updated-testimonials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011181141109_Updated-Contact-Form.resx">
+      <DependentUpon>202011181141109_Updated-Contact-Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011181143083_Updated-Contact-Form2.resx">
+      <DependentUpon>202011181143083_Updated-Contact-Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011181223559_Updated-Contact-Form3.resx">
+      <DependentUpon>202011181223559_Updated-Contact-Form3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
