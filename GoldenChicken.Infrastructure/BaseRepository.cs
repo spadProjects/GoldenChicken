@@ -68,7 +68,7 @@ namespace GoldenChicken.Infrastructure
 
         public List<TEntity> GetAll()
         {
-            return  context.Set<TEntity>().Where(e=>e.IsDeleted == false).OrderBy(e=>e.InsertDate).ToList();
+            return  context.Set<TEntity>().Where(e=>e.IsDeleted == false).OrderByDescending(e=>e.InsertDate).ToList();
         }     
         public List<TEntity> GetSome(PaginationFilter pagination)
         {

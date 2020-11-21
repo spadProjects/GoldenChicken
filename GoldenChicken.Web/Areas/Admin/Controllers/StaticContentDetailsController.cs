@@ -51,7 +51,7 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
 
                     // Resizing Image
                     ImageResizer image = new ImageResizer();
-                    if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.Slider)
+                    if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.Slider || staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.BlogImage)
                         image = new ImageResizer(1020, 700, true);
                     if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.CompanyHistory)
                         image = new ImageResizer(1000, 1000, true);
@@ -107,7 +107,7 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
 
                     // Resizing Image
                     ImageResizer image = new ImageResizer();
-                    if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.Slider)
+                    if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.Slider || staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.BlogImage)
                         image = new ImageResizer(1020, 700, true);
                     if (staticContentDetail.StaticContentTypeId == (int)StaticContentTypes.CompanyHistory)
                         image = new ImageResizer(1000, 1000, true);

@@ -10,6 +10,7 @@ namespace GoldenChicken.Core.Utility
     {
         Slider = 1001,
         CompanyHistory = 2,
+        BlogImage = 1004
     }
     public enum StaticContents
     {
@@ -22,5 +23,7 @@ namespace GoldenChicken.Core.Utility
         Twitter = 1011,
         Pinterest = 1012,
         Facebook = 1010,
+        BlogImage = 1013,
+        ContactInfo = 1014
     }
 }

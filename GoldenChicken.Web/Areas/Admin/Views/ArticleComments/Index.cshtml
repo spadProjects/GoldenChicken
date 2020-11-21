@@ -50,7 +50,10 @@
                             @<text>
                                 <a class='btn btn-sm btn-clean btn-icon mr-2' href="/Admin/ArticleComments/Edit/@item.Comment.Id"><i class='far fa-edit text-primary'></i></a>
                                 <a class='btn btn-sm btn-clean btn-icon' onclick="@(CheckPermission.Check("articlecommentsdelete") ? $"btnDelete({item.Comment.Id})" : "accessDenied()")"><i class='far fa-trash-alt text-danger'></i></a>
-                                <a class='btn btn-primary btn-sm' onclick="@(CheckPermission.Check("articlecommentsanswercomment") ? $"btnAnswerComment({item.Comment.ArticleId},{item.Comment.Id})" : "accessDenied()")">پاسخ دادن</a>
+                                @if(item.Comment.ParentId == null)
+                                {
+                                    <a class='btn btn-primary btn-sm' onclick="@(CheckPermission.Check("articlecommentsanswercomment") ? $"btnAnswerComment({item.Comment.ArticleId},{item.Comment.Id})" : "accessDenied()")">پاسخ دادن</a>
+                                }
                             </text>
                                 ).Width(255);
                         })

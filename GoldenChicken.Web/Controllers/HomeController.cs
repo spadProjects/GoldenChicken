@@ -78,8 +78,11 @@ namespace GoldenChicken.Web.Controllers
         {
             return View();
         }
-        public ActionResult Footer()
+        public ActionResult Footer(bool isContactUsPage)
         {
+            if (isContactUsPage)
+                ViewBag.ContactUsPage = true;
+
             var footerContent = new FooterViewModel();
             footerContent.Map = _contentRepo.Get((int) StaticContents.Map);
             footerContent.Email = _contentRepo.Get((int) StaticContents.Email);
@@ -98,18 +101,27 @@ namespace GoldenChicken.Web.Controllers
             var galleryContent = _galleryRepo.GetAll();
             return View(galleryContent);
         }
+        [Route("AboutUs")]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
+        [Route("ContactUs")]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            ViewBag.ContactUsPage = true;
+            var contactUsContent = new ContactUsViewModel();
+            contactUsContent.ContactInfo = _contentRepo.Get((int)StaticContents.ContactInfo);
+            contactUsContent.Email = _contentRepo.Get((int)StaticContents.Email);
+            contactUsContent.Address = _contentRepo.Get((int)StaticContents.Address);
+            contactUsContent.Phone = _contentRepo.Get((int)StaticContents.Phone);
+            contactUsContent.Youtube = _contentRepo.Get((int)StaticContents.Youtube);
+            contactUsContent.Instagram = _contentRepo.Get((int)StaticContents.Instagram);
+            contactUsContent.Twitter = _contentRepo.Get((int)StaticContents.Twitter);
+            contactUsContent.Pinterest = _contentRepo.Get((int)StaticContents.Pinterest);
+            contactUsContent.Facebook = _contentRepo.Get((int)StaticContents.Facebook);
+            return View(contactUsContent);
         }
         public ActionResult UploadImage(HttpPostedFileBase upload, string CKEditorFuncNum, string CKEditor, string langCode)
         {

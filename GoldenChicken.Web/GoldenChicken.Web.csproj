@@ -216,6 +216,7 @@
     <Compile Include="Areas\Admin\Controllers\TestimonialsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1672,6 +1673,7 @@
     <Content Include="Files\ProjectImages\Thumb\da30c0d6-c8d0-45f5-b0a0-1194a9d0d4b8.png" />
     <Content Include="Files\UserAvatars\3cf0f330-af46-43b4-8f6d-578af670e801.jpg" />
     <Content Include="Files\UserAvatars\5e15f24a-0f87-470f-bcda-1ad269195bf8.png" />
+    <Content Include="Files\UserAvatars\user-avatar.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -1894,10 +1896,16 @@
     <Content Include="Views\Home\ContactUsSummary.cshtml" />
     <Content Include="Views\Home\Footer.cshtml" />
     <Content Include="Views\Home\GalleryPage.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\TopArticlesSection.cshtml" />
+    <Content Include="Views\Blog\ArticleCategoriesSection.cshtml" />
+    <Content Include="Views\Blog\Details.cshtml" />
+    <Content Include="Views\Blog\LatestArticlesSection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Files\ArticleImages\Temp\" />
     <Folder Include="Files\GalleryImages\Temp\" />
     <Folder Include="Files\GalleryImages\Thumb\" />
     <Folder Include="Files\Services\File\" />

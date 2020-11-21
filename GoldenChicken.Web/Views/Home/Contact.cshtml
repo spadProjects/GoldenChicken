@@ -1,17 +1,57 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@model GoldenChicken.Web.ViewModels.ContactUsViewModel
+@{
+    ViewBag.Title = "ارتباط با ما";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<section class="section-padding restaurent-about smoothscroll" id="about">
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+</section>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div class="container contactUs-part">
+    <div class="row">
+        <div class="col-md-6">
+            @Html.Action("ContactUsForm","Home")
+        </div>
+        <div class="col-md-6 contact-info">
+            <h3 class="text-light-black fw-700 title contact-info">@Model.ContactInfo.Title</h3>
+            <p class="text-light-green no-margin contact-info">@Model.ContactInfo.ShortDescription</p>
+            <p class="text-light-white no-margin">
+                @Html.Raw(Model.ContactInfo.Description)
+            </p>
+            <ul class="about-restaurent">
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>
+                        <span class="text-light-white">
+                          @Model.Address.ShortDescription
+                        </span>
+                    </span>
+                </li>
+                <li>
+                    <i class="fas fa-phone-alt"></i>
+                    <span><a href="tel:@Model.Phone.ShortDescription" class="text-light-white">@Model.Phone.ShortDescription</a></span>
+                </li>
+                <li>
+                    <i class="far fa-envelope"></i>
+                    <span><a href="mailto:@Model.Email.ShortDescription" class="text-light-white">@Model.Email.ShortDescription</a></span>
+                </li>
+            </ul>
+            <ul class="social-media pt-2">
+                <li>
+                    <a href="@Model.Facebook.Link"><i class="fab fa-facebook-f"></i></a>
+                </li>
+                <li>
+                    <a href="@Model.Twitter.Link"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li>
+                    <a href="@Model.Instagram.Link"><i class="fab fa-instagram"></i></a>
+                </li>
+                <li>
+                    <a href="@Model.Pinterest.Link"><i class="fab fa-pinterest-p"></i></a>
+                </li>
+                <li>
+                    <a href="@Model.Youtube.Link"><i class="fab fa-youtube"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

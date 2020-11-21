@@ -1,6 +1,7 @@
 ﻿using GoldenChicken.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,5 +17,6 @@ namespace GoldenChicken.Infrastructure.Repositories
             _context = context;
             _logger = logger;
         }
+
     }
 }

@@ -17,7 +17,7 @@ namespace GoldenChicken.Infrastructure.Repositories
         }
         public List<Food> GetFoods()
         {
-            return _context.Foods.Include(p => p.FoodType).Where(p => p.IsDeleted == false).OrderBy(a => a.InsertDate).ToList();
+            return _context.Foods.Include(p => p.FoodType).Where(p => p.IsDeleted == false).OrderByDescending(a => a.InsertDate).ToList();
         }
         public List<FoodType> GetFoodTypes()
         {

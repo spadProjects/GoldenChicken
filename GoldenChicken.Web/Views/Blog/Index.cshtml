@@ -1,0 +1,83 @@
+﻿@model List<GoldenChicken.Web.ViewModels.ArticleListViewModel>
+@{
+    ViewBag.Title = "بلاگ";
+}
+    <section class="our-articles bg-light-theme section-padding pt-0">
+        <div class="blog-page-banner" style="background-image: url(/Files/StaticContentImages/Image/@ViewBag.BlogImage)"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <aside class="col-lg-3">
+                    <div class="side-bar section-padding pb-0 mb-md-40">
+                        @Html.Action("TopArticlesSection","Blog")
+                        @Html.Action("ArticleCategoriesSection","Blog")
+                    </div>
+                </aside>
+                <div class="col-lg-9 blog-inner clearfix">
+                    <div class="main-box padding-20 full-width">
+                        <div class="breadcrumb-wrpr">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="/" class="text-light-black">خانه</a>
+                                </li>
+                                @if (ViewBag.BreadCrumb == null)
+                                {
+                                    <li class="breadcrumb-item active" aria-current="page">بلاگ</li>
+                                }
+                                else
+                                {
+                                    <li class="breadcrumb-item">
+                                        <a href="/Blog" class="text-light-black">بلاگ</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">@ViewBag.BreadCrumb</li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-xl-6 col-lg-12 col-sm-6">
+                                    <article class="blog-services-wrapper main-box mb-xl-20">
+                                        <div class="post-img">
+                                            <a href="/Blog/Post/@item.Id/@item.Title.Replace(" ", "-")">
+                                                <img src="/Files/ArticleImages/Thumb/@item.Image" class="img-fluid full-width"
+                                                     alt="@item.Title">
+                                            </a>
+                                        </div>
+                                        <div class="post-meta">
+                                            <div class="author-img" style="width: 50px">
+                                                <img src="/Files/UserAvatars/@item.AuthorAvatar" class="rounded-circle" alt="image">
+                                            </div>
+                                            <div class="author-meta">
+                                                <h6 class="no-margin"><span class="text-light-black">@item.Author</span></h6>
+                                                <p class="no-margin text-light-white">
+                                                    <span class="text-light-white">@item.Role</span> |
+                                                    @item.PersianDate
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="post-content padding-20">
+                                            <h5>
+                                                <a href="/Blog/Post/@item.Id/@item.Title.Replace(" ", "-")" class="text-light-black">
+                                                    @item.Title
+                                                </a>
+                                            </h5>
+                                            <p>
+                                                @item.ShortDescription
+                                            </p>
+                                            <div class="blog-link-wrap">
+                                                <a href="/Blog/Post/@item.Id/@item.Title.Replace(" ", "-")" class="btn-first white-btn">
+                                                    بیشتر
+                                                    بخوانید
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
