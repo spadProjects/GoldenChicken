@@ -5,6 +5,7 @@ using GoldenChicken.Core.Models;
 using GoldenChicken.Infrastructure.Repositories;
 using System.Web;
 using System.IO;
+using GoldenChicken.Infrastructure.Helpers;
 
 namespace GoldenChicken.Web.Areas.Admin.Controllers
 {
@@ -33,8 +34,16 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
                 #region Upload Image
                 if (OurTeamImage != null)
                 {
+                    // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(OurTeamImage.FileName);
-                    OurTeamImage.SaveAs(Server.MapPath("/Files/OurTeamImages/" + newFileName));
+                    OurTeamImage.SaveAs(Server.MapPath("/Files/OurTeamImages/Temp/" + newFileName));
+                    // Resize Image
+                    ImageResizer image = new ImageResizer(370, 435, true);
+                    image.Resize(Server.MapPath("/Files/OurTeamImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/OurTeamImages/" + newFileName));
+
+                    // Deleting Temp Image
+                    System.IO.File.Delete(Server.MapPath("/Files/OurTeamImages/Temp/" + newFileName));
                     outTeam.Image = newFileName;
                 }
                 #endregion
@@ -71,9 +80,16 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
                 {
                     if (System.IO.File.Exists(Server.MapPath("/Files/OurTeamImages/" + outTeam.Image)))
                         System.IO.File.Delete(Server.MapPath("/Files/OurTeamImages/" + outTeam.Image));
-
+                    // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(OurTeamImage.FileName);
-                    OurTeamImage.SaveAs(Server.MapPath("/Files/OurTeamImages/" + newFileName));
+                    OurTeamImage.SaveAs(Server.MapPath("/Files/OurTeamImages/Temp/" + newFileName));
+                    // Resize Image
+                    ImageResizer image = new ImageResizer(370, 435, true);
+                    image.Resize(Server.MapPath("/Files/OurTeamImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/OurTeamImages/" + newFileName));
+
+                    // Deleting Temp Image
+                    System.IO.File.Delete(Server.MapPath("/Files/OurTeamImages/Temp/" + newFileName));
                     outTeam.Image = newFileName;
                 }
                 #endregion

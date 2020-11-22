@@ -17,22 +17,22 @@
     <div class="card card-custom gutter-b">
         <div class="card-header">
             <h3 class="card-title">
-                افزودن محتوا
+                افزودن اسلایدر
             </h3>
         </div>
         @using (Html.BeginForm("Create", "StaticContentDetails", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
-
+            <input type="hidden" id="StaticContentTypeId" name="StaticContentTypeId" value="@ViewBag.StaticContentTypeId">
             <div class="card-body">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
+                @*<div class="form-group">
                     @Html.LabelFor(model => model.StaticContentTypeId, "نوع محتوا", new { })
                     <div class="col-md-5">
                         @Html.DropDownList("StaticContentTypeId", null, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.StaticContentTypeId, "", new { @class = "form-text text-danger" })
                     </div>
-                </div>
+                </div>*@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Title, new { })
                     <div class="col-md-5">

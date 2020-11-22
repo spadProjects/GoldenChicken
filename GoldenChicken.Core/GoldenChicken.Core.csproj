@@ -87,10 +87,10 @@
     <Compile Include="Models\GalleryVideo.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\OurTeam.cs" />
-    <Compile Include="Models\Partner.cs" />
+    <Compile Include="Models\Certificate.cs" />
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\Food.cs" />
-    <Compile Include="Models\ProjectGallery.cs" />
+    <Compile Include="Models\FoodGallery.cs" />
     <Compile Include="Models\FoodType.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\RolePermission.cs" />

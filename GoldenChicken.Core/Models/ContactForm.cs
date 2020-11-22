@@ -25,6 +25,7 @@ namespace GoldenChicken.Core.Models
         [Required(ErrorMessage = "لطفا {0} خود را وارد کنید")]
         [DataType(DataType.MultilineText)]
         public string Message { get; set; }
+        public bool IsViewed { get; set; }
         //public int ServiceId { get; set; }
         //public Service Service { get; set; }
         public string InsertUser { get; set; }

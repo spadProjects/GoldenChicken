@@ -37,7 +37,7 @@
                 .HtmlAttributes(new { style = "height:450px" })
                 .Columns(columns =>
                 {
-                    columns.Bound(model => model.Name);
+                    columns.Bound(model => model.Title);
                     columns.Bound(model => model.Role);
 
                         columns.Bound(item => @item.Id).IncludeInMenu(false).Sortable(false).Title("دستورات").Filterable(false).Groupable(false).Template(

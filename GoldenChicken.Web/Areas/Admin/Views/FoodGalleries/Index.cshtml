@@ -2,7 +2,7 @@
 @using Kendo.Mvc.UI
 @using GoldenChicken.Infrastructure.Helpers;
 @{
-    ViewBag.Title = "گالری";
+    ViewBag.Title = "غذاها";
 }
 <input type="hidden" id="nav_active" value="food_control">
 <input type="hidden" id="nav_item_active" value="foods">
@@ -11,14 +11,11 @@
         <div class="card-title">
             <h3 class="card-label">
                 @ViewBag.Title
-                <span class="d-block text-muted pt-2 font-size-sm">ویرایش گالری غذا @ViewBag.FoodName</span>
+                <span class="d-block text-muted pt-2 font-size-sm">ویرایش غذاها</span>
             </h3>
 
         </div>
         <div class="card-toolbar">
-            <a href="/Admin/Foods" class="btn btn-light-success" style="margin-left:20px">
-                <i class="flaticon2-arrow"></i> بازگشت
-            </a>
             <!--begin::Button-->
             <a onclick="@(CheckPermission.Check("foodgalleriescreate") ? $"btnCreate({ViewBag.FoodId})" : "accessDenied()")" class="btn btn-primary font-weight-bolder">
                 <span class="svg-icon svg-icon-md">
@@ -44,7 +41,7 @@
                     columns.Bound(model => model.Title);
                     columns.Bound(item => @item.Image).Filterable(false).Groupable(false)
                         .Template(@<text>
-                              <img src="~/Files/FoodImages/FoodGallery/@item.Image" style="height: 50px" alt="@item.Title"/>
+                              <img src="~/Files/FoodImages/@item.Image" style="height: 50px" alt="@item.Title"/>
                            </text>);
                     columns.Bound(item => @item.Id).IncludeInMenu(false).Sortable(false).Title("دستورات").Filterable(false).Groupable(false).Template(
                         @<text>
@@ -114,7 +111,7 @@
         function btnCreate(id) {
             $.get("/Admin/FoodGalleries/Create?foodId="+id, function (result) {
                 $("#myModal").modal();
-                $("#myModalLabel").html("افرودن تصویر");
+                $("#myModalLabel").html("افرودن غذا");
                 $("#myModalHeader");
                 $("#myModalBody").html(result);
             });
@@ -122,7 +119,7 @@
         function btnEdit(id) {
             $.get("/Admin/FoodGalleries/Edit/" + id, function (result) {
                 $("#myModal").modal();
-                $("#myModalLabel").html("ویرایش تصویر");
+                $("#myModalLabel").html("ویرایش غذا");
                 $("#myModalHeader");
                 $("#myModalBody").html(result);
             });
@@ -130,7 +127,7 @@
         function btnDelete(id) {
             $.get("/Admin/FoodGalleries/Delete/" + id, function (result) {
                 $("#myModal").modal();
-                $("#myModalLabel").html("حذف تصویر");
+                $("#myModalLabel").html("حذف غذا");
                 $("#myModalHeader");
                 $("#myModalBody").html(result);
             });

@@ -30,4 +30,10 @@ namespace GoldenChicken.Web.ViewModels
         public StaticContentDetail Facebook { get; set; }
         public StaticContentDetail Pinterest { get; set; }
     }
+
+    public class GalleryPageViewModel
+    {
+        public List<Gallery> Images { get; set; }
+        public List<GalleryVideo> Videos { get; set; }
+    }
 }

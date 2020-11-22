@@ -6,6 +6,7 @@ using GoldenChicken.Infrastructure.Repositories;
 using System.Web;
 using System.IO;
 using System.Threading;
+using GoldenChicken.Infrastructure.Helpers;
 
 namespace GoldenChicken.Web.Areas.Admin.Controllers
 {
@@ -28,7 +29,7 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(GalleryVideo video, HttpPostedFileBase GalleryVideo)
+        public ActionResult Create(GalleryVideo video, HttpPostedFileBase GalleryVideo, HttpPostedFileBase GalleryImage)
         {
             if (ModelState.IsValid)
             {
@@ -40,7 +41,24 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
                     video.Video = newFileName;
                 }
                 #endregion
+                #region Upload Image
+                if (GalleryImage != null)
+                {
+                    // Saving Temp Image
+                    var newFileName = Guid.NewGuid() + Path.GetExtension(GalleryImage.FileName);
+                    GalleryImage.SaveAs(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName));
 
+                    // Resizing Image
+                    ImageResizer imageCut = new ImageResizer(1200, 1200, true);
+
+                    imageCut.Resize(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/GalleryImages/" + newFileName));
+
+                    // Deleting Temp Image
+                    System.IO.File.Delete(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName));
+                    video.Image = newFileName;
+                }
+                #endregion
                 _repo.Add(video);
                 return RedirectToAction("Index");
             }
@@ -64,7 +82,7 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(GalleryVideo gallery, HttpPostedFileBase GalleryVideo)
+        public ActionResult Edit(GalleryVideo gallery, HttpPostedFileBase GalleryVideo, HttpPostedFileBase GalleryImage)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +97,27 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
                     gallery.Video = newFileName;
                 }
                 #endregion
+                #region Upload Image
+                if (GalleryImage != null)
+                {
+                    if (System.IO.File.Exists(Server.MapPath("/Files/GalleryImages/" + gallery.Image)))
+                        System.IO.File.Delete(Server.MapPath("/Files/GalleryImages/" + gallery.Image));
 
+                    // Saving Temp Image
+                    var newFileName = Guid.NewGuid() + Path.GetExtension(GalleryImage.FileName);
+                    GalleryImage.SaveAs(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName));
+
+                    // Resizing Image
+                    ImageResizer imageCut = new ImageResizer(1200, 1200, true);
+
+                    imageCut.Resize(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/GalleryImages/" + newFileName));
+
+                    // Deleting Temp Image
+                    System.IO.File.Delete(Server.MapPath("/Files/GalleryImages/Temp/" + newFileName));
+                    gallery.Image = newFileName;
+                }
+                #endregion
                 _repo.Update(gallery);
                 return RedirectToAction("Index");
             }
@@ -124,8 +162,8 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
                 if (System.IO.File.Exists(Server.MapPath("/Files/GalleryVideos/" + video.Video)))
                     System.IO.File.Delete(Server.MapPath("/Files/GalleryVideos/" + video.Video));
 
-                if (System.IO.File.Exists(Server.MapPath("/Files/GalleryVideos/" + video.Video)))
-                    System.IO.File.Delete(Server.MapPath("/Files/GalleryVideos/" + video.Video));
+                if (System.IO.File.Exists(Server.MapPath("/Files/GalleryImages/" + video.Image)))
+                    System.IO.File.Delete(Server.MapPath("/Files/GalleryImages/" + video.Image));
             }
             #endregion
 

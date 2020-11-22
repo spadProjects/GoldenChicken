@@ -10,7 +10,6 @@
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model => model.FoodId)
         @Html.HiddenFor(model => model.Image)
         @Html.HiddenFor(model => model.InsertDate)
         @Html.HiddenFor(model => model.InsertUser)
@@ -25,7 +24,7 @@
             <label class="control-label col-md-4">تصویر</label>
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="image-input image-input-outline" id="image">
-                    <div class="image-input-wrapper" style="background-image: url(/Files/FoodImages/FoodGallery/@Model.Image)"></div>
+                    <div class="image-input-wrapper" style="background-image: url(/Files/FoodImages/@Model.Image)"></div>
 
                     <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="آپلود تصویر">
                         <i class="fa fa-pen icon-sm text-muted"></i>

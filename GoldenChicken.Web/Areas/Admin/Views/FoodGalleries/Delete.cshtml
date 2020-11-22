@@ -1,6 +1,6 @@
 ﻿@model GoldenChicken.Core.Models.FoodGallery
 <h4 class="card-label">
-    آیا مطمئن هستید که می خواهید این تصویر را حذف کنید؟
+    آیا مطمئن هستید که می خواهید این غذا را حذف کنید؟
 </h4>
 <dl class="row" style="padding-top:10px">
     <dt class="col-sm-4">
@@ -13,7 +13,7 @@
         @Html.DisplayNameFor(model => model.Image)
     </dt>
     <dd class="col-sm-8">
-        <img src="~/Files/FoodImages/FoodGallery/@Model.Image" style="height: 50px" alt="@Model.Title" />
+        <img src="~/Files/FoodImages/@Model.Image" style="height: 50px" alt="@Model.Title" />
     </dd>
 </dl>
 <div style="float:left">

@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
@@ -94,6 +95,30 @@
     <Compile Include="Migrations\202011181223559_Updated-Contact-Form3.Designer.cs">
       <DependentUpon>202011181223559_Updated-Contact-Form3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011220724244_Updated-ourteam.cs" />
+    <Compile Include="Migrations\202011220724244_Updated-ourteam.Designer.cs">
+      <DependentUpon>202011220724244_Updated-ourteam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011221033160_Updated-certificates.cs" />
+    <Compile Include="Migrations\202011221033160_Updated-certificates.Designer.cs">
+      <DependentUpon>202011221033160_Updated-certificates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011221137405_updated-food-gallery.cs" />
+    <Compile Include="Migrations\202011221137405_updated-food-gallery.Designer.cs">
+      <DependentUpon>202011221137405_updated-food-gallery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011221139179_updated-food-gallery2.cs" />
+    <Compile Include="Migrations\202011221139179_updated-food-gallery2.Designer.cs">
+      <DependentUpon>202011221139179_updated-food-gallery2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011221217207_updated-gallery-videos.cs" />
+    <Compile Include="Migrations\202011221217207_updated-gallery-videos.Designer.cs">
+      <DependentUpon>202011221217207_updated-gallery-videos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011221305497_updated-cform.cs" />
+    <Compile Include="Migrations\202011221305497_updated-cform.Designer.cs">
+      <DependentUpon>202011221305497_updated-cform.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,7 +133,7 @@
     <Compile Include="Repositories\GalleryVideosRepository.cs" />
     <Compile Include="Repositories\LogsRepository.cs" />
     <Compile Include="Repositories\OurTeamRepository.cs" />
-    <Compile Include="Repositories\PartnersRepository.cs" />
+    <Compile Include="Repositories\CertificatesRepository.cs" />
     <Compile Include="Repositories\ProjectGalleriesRepository.cs" />
     <Compile Include="Repositories\ProjectsRepository.cs" />
     <Compile Include="Repositories\ProjectTypesRepository.cs" />
@@ -152,6 +177,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011181223559_Updated-Contact-Form3.resx">
       <DependentUpon>202011181223559_Updated-Contact-Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011220724244_Updated-ourteam.resx">
+      <DependentUpon>202011220724244_Updated-ourteam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011221033160_Updated-certificates.resx">
+      <DependentUpon>202011221033160_Updated-certificates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011221137405_updated-food-gallery.resx">
+      <DependentUpon>202011221137405_updated-food-gallery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011221139179_updated-food-gallery2.resx">
+      <DependentUpon>202011221139179_updated-food-gallery2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011221217207_updated-gallery-videos.resx">
+      <DependentUpon>202011221217207_updated-gallery-videos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011221305497_updated-cform.resx">
+      <DependentUpon>202011221305497_updated-cform.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

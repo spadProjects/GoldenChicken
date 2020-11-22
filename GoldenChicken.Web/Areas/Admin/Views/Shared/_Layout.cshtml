@@ -8,6 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/Content/logo.png">
     <title>@ViewBag.Title - Jooje Talaai</title>
     @*@Styles.Render("~/Content/css")*@
     @*@Scripts.Render("~/bundles/modernizr")
@@ -229,7 +230,7 @@
                                 id="nav_food_control"
                                 aria-haspopup="true"
                                 data-menu-toggle="hover">
-                                <a href="javascript:;" class="menu-link menu-toggle">
+                                <a href="/Admin/FoodGalleries" class="menu-link menu-toggle">
                                     <span class="svg-icon menu-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -241,24 +242,8 @@
                                                 <path d="M2.5,12.3684211 L2.5,12.3684211 C2.90055463,12.3684211 3.23115721,12.6816982 3.25269782,13.0816732 L3.51381042,17.9301218 C3.54396441,18.4900338 3.11451066,18.9683769 2.55459863,18.9985309 C2.53641556,18.9995101 2.51820943,19 2.5,19 L2.5,19 C1.93927659,19 1.48472045,18.5454439 1.48472045,17.9847204 C1.48472045,17.966511 1.48521034,17.9483049 1.48618958,17.9301218 L1.74730218,13.0816732 C1.76884279,12.6816982 2.09944537,12.3684211 2.5,12.3684211 Z" fill="#000000" opacity="0.3" />
                                             </g>
                                         </svg>
-                                    </span><span class="menu-text">مدیریت غذا ها</span><i class="menu-arrow"></i>
+                                    </span><span class="menu-text">مدیریت غذا ها</span>
                                 </a>
-                                <div class="menu-submenu" id="subnav_food_control">
-                                    <i class="menu-arrow"></i>
-                                    <ul class="menu-subnav">
-                                        <li class="menu-item" id="nav_item_food_types" aria-haspopup="true">
-                                            <a href="/Admin/FoodTypes"
-                                               class="menu-link">
-                                                <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">انواع غذا</span>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item" id="nav_item_foods" aria-haspopup="true">
-                                            <a href="/Admin/Foods" class="menu-link">
-                                                <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">غذا ها</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </li>
                             <li class="menu-item menu-item-submenu"
                                 id="nav_content_control"
@@ -277,11 +262,11 @@
                                 <div class="menu-submenu" id="subnav_content_control">
                                     <i class="menu-arrow"></i>
                                     <ul class="menu-subnav">
-                                        <li class="menu-item" id="nav_item_faq" aria-haspopup="true">
+                                        @*<li class="menu-item" id="nav_item_faq" aria-haspopup="true">
                                             <a href="/Admin/Faq" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">سوالات متداول</span>
                                             </a>
-                                        </li>
+                                        </li>*@
                                         <li class="menu-item" id="nav_item_testimonial" aria-haspopup="true">
                                             <a href="/Admin/Testimonials" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">رضایت مشتریان</span>
@@ -297,9 +282,9 @@
                                                 <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">گالری ویدیو</span>
                                             </a>
                                         </li>
-                                        <li class="menu-item" id="nav_item_partners" aria-haspopup="true">
-                                            <a href="/Admin/Partners" class="menu-link">
-                                                <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">همکاران</span>
+                                        <li class="menu-item" id="nav_item_certificates" aria-haspopup="true">
+                                            <a href="/Admin/Certificates" class="menu-link">
+                                                <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">افتخارات و گواهینامه ها</span>
                                             </a>
                                         </li>
                                         <li class="menu-item" id="nav_item_ourteam" aria-haspopup="true">
@@ -355,7 +340,7 @@
                                                 <path d="M11.1288761,0.733697713 L11.1288761,2.69017121 L9.12120481,2.69017121 C8.84506244,2.69017121 8.62120481,2.91402884 8.62120481,3.19017121 L8.62120481,4.21346991 C8.62120481,4.48961229 8.84506244,4.71346991 9.12120481,4.71346991 L11.1288761,4.71346991 L11.1288761,6.66994341 C11.1288761,6.94608579 11.3527337,7.16994341 11.6288761,7.16994341 C11.7471877,7.16994341 11.8616664,7.12798964 11.951961,7.05154023 L15.4576222,4.08341738 C15.6683723,3.90498251 15.6945689,3.58948575 15.5161341,3.37873564 C15.4982803,3.35764848 15.4787093,3.33807751 15.4576222,3.32022374 L11.951961,0.352100892 C11.7412109,0.173666017 11.4257142,0.199862688 11.2472793,0.410612793 C11.1708299,0.500907473 11.1288761,0.615386087 11.1288761,0.733697713 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(11.959697, 3.661508) rotate(-270.000000) translate(-11.959697, -3.661508) " />
                                             </g>
                                         </svg><!--end::Svg Icon-->
-                                    </span><span class="menu-text">فرم ارتباط با ما</span>
+                                    </span><span class="menu-text">فرم تماس با ما</span>
                                 </a>
                             </li>
                             <li class="menu-item menu-item-submenu"
@@ -383,11 +368,11 @@
                                                 <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">نقش ها</span>
                                             </a>
                                         </li>
-                                        <li class="menu-item" id="nav_item_permissions" aria-haspopup="true">
+                                        @*<li class="menu-item" id="nav_item_permissions" aria-haspopup="true">
                                             <a href="/Admin/Permissions" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">مجوز ها</span>
                                             </a>
-                                        </li>
+                                        </li>*@
                                         <li class="menu-item" id="nav_item_users" aria-haspopup="true">
                                             <a href="/Admin/Users" class="menu-link">
                                                 <i class="menu-bullet menu-bullet-dot"><span></span></i><span class="menu-text">کاربران</span>

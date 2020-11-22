@@ -25,6 +25,9 @@
 
                             </li>
                             <li><a href="/ContactUs">تماس با ما</a></li>
+                            <li><a href="/OurTeam">مدیران</a></li>
+                            <li><a href="/Certificates">گواهینامه ها</a></li>
+                            <li><a href="/Foods">غذا ها</a></li>
                         </ul>
                     </div>
                     <!--Main Navigation End -->
@@ -33,10 +36,18 @@
                         <!--Seach Area Start -->
                         <!--Seach Area End -->
                         <!--Contact info Start -->
+                        <div class="contact-link" style="margin-left: 16px">
+                            <div class="phone">
+                                <p>اشتراک گزاری</p>
+                                <a href="javascript:void(0)"onclick="sharePage('@Request.Url.AbsoluteUri')"  class="d-block text-center"><i class="fas fa-share"></i></a>
+
+                            </div>
+                        </div>
                         <div class="contact-link">
                             <div class="phone">
                                 <p>با ما تماس بگیرید:</p>
                                 <a href="tel:@ViewBag.Phone" class="d-block text-center">@ViewBag.Phone</a>
+
                             </div>
                         </div>
                         <!--Contact info End -->
@@ -60,6 +71,9 @@
                                 <a href="/Blog">بلاگ</a>
                             </li>
                             <li><a href="/ContactUs">تماس با ما</a></li>
+                            <li><a href="/OurTeam">مدیران</a></li>
+                            <li><a href="/Certificates">گواهینامه ها</a></li>
+                            <li><a href="/Foods">غذا ها</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -68,3 +82,21 @@
         </div>
     </div>
 </header>
+<!--Alert Modal -->
+<script>
+    function message(msg) {
+        if (Notification) {
+            if (Notification.permission === "granted") {
+                var notification = new Notification("آدرس با موفقیت کپی شد", { body: msg });
+                setTimeout(function() {notification.close()}, 3000);
+            } else { Notification.requestPermission(); }
+        }
+        else { alert(msg);}
+    }
+    function sharePage(copyText) {
+        document.execCommand("copy");
+        message(copyText);
+        //var notification = new Notification("آدرس با موفقیت کپی شد", { body: copyText });
+        //setTimeout(function() {notification.close()}, 3000);
+    }
+</script>

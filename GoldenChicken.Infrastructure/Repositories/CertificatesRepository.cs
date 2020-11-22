@@ -5,11 +5,11 @@ using System.Text;
 
 namespace GoldenChicken.Infrastructure.Repositories
 {
-    public class PartnersRepository : BaseRepository<Partner, MyDbContext>
+    public class CertificatesRepository : BaseRepository<Certificate, MyDbContext>
     {
         private readonly MyDbContext _context;
         private readonly LogsRepository _logger;
-        public PartnersRepository(MyDbContext context, LogsRepository logger) : base(context, logger)
+        public CertificatesRepository(MyDbContext context, LogsRepository logger) : base(context, logger)
         {
             _context = context;
             _logger = logger;

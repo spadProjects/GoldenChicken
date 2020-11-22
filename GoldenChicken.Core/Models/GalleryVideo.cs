@@ -12,6 +12,8 @@ namespace GoldenChicken.Core.Models
         public int Id { get; set; }
         [Display(Name = "ویدئو")]
         public string Video { get; set; }
+        [Display(Name = "تصویر بند انگشتی")]
+        public string Image { get; set; }
         [Display(Name = "عنوان ویدئو")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string Title { get; set; }

@@ -203,7 +203,7 @@
     <Compile Include="Areas\Admin\Controllers\GalleryVideosController.cs" />
     <Compile Include="Areas\Admin\Controllers\GridController.cs" />
     <Compile Include="Areas\Admin\Controllers\OurTeamController.cs" />
-    <Compile Include="Areas\Admin\Controllers\PartnersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CertificatesController.cs" />
     <Compile Include="Areas\Admin\Controllers\PermissionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\FoodGalleriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\FoodsController.cs" />
@@ -1369,6 +1369,7 @@
     <Content Include="Content\client\css\style.css" />
     <Content Include="Content\client\css\style.min.css" />
     <Content Include="Content\client\css\swiper.min.css" />
+    <Content Include="Content\client\css\video-player.css" />
     <Content Include="Content\client\fonts\fa-brands-400.svg" />
     <Content Include="Content\client\fonts\fa-regular-400.svg" />
     <Content Include="Content\client\fonts\fa-solid-900.svg" />
@@ -1436,6 +1437,8 @@
     <Content Include="Content\client\img\blog\optin-1.jpg" />
     <Content Include="Content\client\img\card-back.jpg" />
     <Content Include="Content\client\img\card-front.jpg" />
+    <Content Include="Content\client\img\certificate\1.jpg" />
+    <Content Include="Content\client\img\certificate\2.jpg" />
     <Content Include="Content\client\img\checkout.jpg" />
     <Content Include="Content\client\img\deals\360x178\shop-1.jpg" />
     <Content Include="Content\client\img\deals\360x178\shop-2.jpg" />
@@ -1493,6 +1496,10 @@
     <Content Include="Content\client\img\logo.jpg" />
     <Content Include="Content\client\img\logo.png" />
     <Content Include="Content\client\img\M.png" />
+    <Content Include="Content\client\img\managers\1.jpg" />
+    <Content Include="Content\client\img\managers\2.jpg" />
+    <Content Include="Content\client\img\managers\3.jpg" />
+    <Content Include="Content\client\img\managers\4.jpg" />
     <Content Include="Content\client\img\mastercard.png" />
     <Content Include="Content\client\img\nav-1.jpg" />
     <Content Include="Content\client\img\navbar-image.jpg" />
@@ -1637,6 +1644,12 @@
     <Content Include="Content\client\img\user\user-3.png" />
     <Content Include="Content\client\img\user\user-4.png" />
     <Content Include="Content\client\img\video-banner.jpg" />
+    <Content Include="Content\client\img\video_player\1.jpg" />
+    <Content Include="Content\client\img\video_player\2.jpg" />
+    <Content Include="Content\client\img\video_player\3.jpg" />
+    <Content Include="Content\client\img\video_player\4.jpg" />
+    <Content Include="Content\client\img\video_player\5.jpg" />
+    <Content Include="Content\client\img\video_player\6.jpg" />
     <Content Include="Content\client\img\visa.jpg" />
     <Content Include="Content\client\img\WhatsApp-Image-2020-11-09-at-15.47.png" />
     <Content Include="Content\client\js\bootstrap.min.js" />
@@ -1650,6 +1663,7 @@
     <Content Include="Content\client\js\popper.min.js" />
     <Content Include="Content\client\js\sticksy.js" />
     <Content Include="Content\client\js\swiper.min.js" />
+    <Content Include="Content\client\js\videoPlayer.js" />
     <Content Include="Content\client\webfonts\fa-regular-400.html" />
     <Content Include="Content\client\webfonts\fa-solid-900.html" />
     <Content Include="Content\logo.jpg" />
@@ -1663,16 +1677,8 @@
     <Content Include="Files\FoodImages\Image\da30c0d6-c8d0-45f5-b0a0-1194a9d0d4b8.png" />
     <Content Include="Files\FoodImages\Thumb\c4f4acac-6ca6-4dd4-941d-5a98fc74a79c.png" />
     <Content Include="Files\FoodImages\Thumb\da30c0d6-c8d0-45f5-b0a0-1194a9d0d4b8.png" />
-    <Content Include="Files\GalleryImages\30430c5d-3c94-4837-b55d-02f94c9d1856.jpg" />
-    <Content Include="Files\GalleryImages\5e15f24a-0f87-470f-bcda-1ad269195bf8.png" />
-    <Content Include="Files\OurTeamImages\4d9a209d-f720-495a-b084-762464257766.png" />
-    <Content Include="Files\PartnersImages\1491125a-3cfd-42e0-a915-ef30c9084a29.png" />
-    <Content Include="Files\PartnersImages\8b7cf755-145e-4974-a427-7af5f78538d9.png" />
-    <Content Include="Files\ProjectImages\Image\da30c0d6-c8d0-45f5-b0a0-1194a9d0d4b8.png" />
-    <Content Include="Files\ProjectImages\ProjectGallery\b036d40e-eed2-4462-8e63-03d698c4211e.png" />
-    <Content Include="Files\ProjectImages\Thumb\da30c0d6-c8d0-45f5-b0a0-1194a9d0d4b8.png" />
+    <Content Include="Files\CertificatesImages\8b7cf755-145e-4974-a427-7af5f78538d9.png" />
     <Content Include="Files\UserAvatars\3cf0f330-af46-43b4-8f6d-578af670e801.jpg" />
-    <Content Include="Files\UserAvatars\5e15f24a-0f87-470f-bcda-1ad269195bf8.png" />
     <Content Include="Files\UserAvatars\user-avatar.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1715,10 +1721,10 @@
     <Content Include="Areas\Admin\Views\OurTeam\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\OurTeam\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\OurTeam\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Partners\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Partners\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Partners\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Partners\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Certificates\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Certificates\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Certificates\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Certificates\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Permissions\AddAminUserAllPermissions.cshtml" />
     <Content Include="Areas\Admin\Views\Permissions\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Permissions\DeclaretionControllersActions.cshtml" />
@@ -1835,6 +1841,8 @@
     <Content Include="Content\client\fonts\fonts\IRANSansWeb_UltraLight.ttf" />
     <Content Include="Content\client\fonts\fonts\IRANSansWeb_UltraLight.woff" />
     <Content Include="Content\client\fonts\fonts\IRANSansWeb_UltraLight.woff2" />
+    <Content Include="Areas\Admin\Views\ContactForm\View.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1901,13 +1909,24 @@
     <Content Include="Views\Blog\ArticleCategoriesSection.cshtml" />
     <Content Include="Views\Blog\Details.cshtml" />
     <Content Include="Views\Blog\LatestArticlesSection.cshtml" />
+    <Content Include="Views\Home\OurTeamSection.cshtml" />
+    <Content Include="Views\Home\OurTeamPage.cshtml" />
+    <Content Include="Views\Home\Certificates.cshtml" />
+    <Content Include="Views\Home\Foods.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Files\ArticleImages\Temp\" />
+    <Folder Include="Files\CertificatesImages\Temp\" />
+    <Folder Include="Files\FoodImages\Temp\" />
     <Folder Include="Files\GalleryImages\Temp\" />
     <Folder Include="Files\GalleryImages\Thumb\" />
+    <Folder Include="Files\GalleryVideos\" />
+    <Folder Include="Files\OurTeamImages\Temp\" />
+    <Folder Include="Files\ProjectImages\Image\" />
+    <Folder Include="Files\ProjectImages\ProjectGallery\" />
+    <Folder Include="Files\ProjectImages\Thumb\" />
     <Folder Include="Files\Services\File\" />
     <Folder Include="Files\Services\Image\" />
     <Folder Include="Files\Services\Thumb\" />

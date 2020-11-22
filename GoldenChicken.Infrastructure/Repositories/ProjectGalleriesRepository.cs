@@ -16,10 +16,10 @@ namespace GoldenChicken.Infrastructure.Repositories
             _context = context;
             _logger = logger;
         }
-        public List<FoodGallery> GetFoodGalleries(int FoodId)
-        {
-            return _context.FoodGalleries.Where(h => h.FoodId == FoodId & h.IsDeleted == false).ToList();
-        }
+        //public List<FoodGallery> GetFoodGalleries(int FoodId)
+        //{
+        //    //return _context.FoodGalleries.Where(h => h.FoodId == FoodId & h.IsDeleted == false).ToList();
+        //}
         public string GetFoodName(int FoodId)
         {
             return _context.Foods.Find(FoodId).Title;

@@ -59,6 +59,22 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
             }
             return View(contactForm);
         }
+        public ActionResult View(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ContactForm contactForm = _repo.Get(id.Value);
+            if (contactForm == null)
+            {
+                return HttpNotFound();
+            }
+
+            contactForm.IsViewed = true;
+            _repo.Update(contactForm);
+            return PartialView(contactForm);
+        }
         public ActionResult Delete(int? id)
         {
             if (id == null)

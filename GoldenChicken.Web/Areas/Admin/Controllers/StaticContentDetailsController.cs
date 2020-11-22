@@ -27,12 +27,14 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
         // GET: Admin/StaticContentDetails
         public ActionResult Index()
         {
-            return View(_repo.GetStaticContentDetails());
+            var content = _repo.GetStaticContentDetails();
+            content = content.OrderByDescending(c => c.StaticContentTypeId == (int) StaticContentTypes.Slider).ThenByDescending(c=>c.StaticContentTypeId).ToList();
+            return View(content);
         }
         // GET: Admin/StaticContentDetails/Create
         public ActionResult Create()
         {
-            ViewBag.StaticContentTypeId = new SelectList(_repo.GetStaticContentTypes(), "Id", "Name");
+            ViewBag.StaticContentTypeId = (int)StaticContentTypes.Slider;
             return View();
         }
 
@@ -69,7 +71,7 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
 
                 return RedirectToAction("Index");
             }
-            ViewBag.StaticContentTypeId = new SelectList(_repo.GetStaticContentTypes(), "Id", "Name", staticContentDetail.StaticContentTypeId);
+            ViewBag.StaticContentTypeId = (int)StaticContentTypes.Slider;
             return View(staticContentDetail);
         }
 

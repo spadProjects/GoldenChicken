@@ -15,15 +15,23 @@ namespace GoldenChicken.Web.Controllers
     {
         private readonly StaticContentDetailsRepository _contentRepo;
         private readonly GalleriesRepository _galleryRepo;
+        private readonly GalleryVideosRepository _galleryVideosRepo;
         private readonly TestimonialsRepository _testimonialRepo;
         private readonly ContactFormsRepository _contactFormRepo;
+        private readonly OurTeamRepository _ourTeamRepo;
+        private readonly CertificatesRepository _certificatesRepo;
+        private readonly FoodGalleriesRepository _foodGalleriesRepo;
 
-        public HomeController(StaticContentDetailsRepository contentRepo, GalleriesRepository galleryRepo, TestimonialsRepository testimonialRepo, ContactFormsRepository contactFormRepo)
+        public HomeController(StaticContentDetailsRepository contentRepo, GalleriesRepository galleryRepo, TestimonialsRepository testimonialRepo, ContactFormsRepository contactFormRepo, OurTeamRepository ourTeamRepo, CertificatesRepository certificatesRepo, FoodGalleriesRepository foodGalleriesRepo, GalleryVideosRepository galleryVideosRepo)
         {
             _contentRepo = contentRepo;
             _galleryRepo = galleryRepo;
             _testimonialRepo = testimonialRepo;
             _contactFormRepo = contactFormRepo;
+            _ourTeamRepo = ourTeamRepo;
+            _certificatesRepo = certificatesRepo;
+            _foodGalleriesRepo = foodGalleriesRepo;
+            _galleryVideosRepo = galleryVideosRepo;
         }
         public ActionResult Index()
         {
@@ -78,6 +86,18 @@ namespace GoldenChicken.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult OurTeamSection()
+        {
+            var ourTeam = _ourTeamRepo.GetAll();
+            return PartialView(ourTeam);
+        }
+        [Route("OurTeam")]
+        public ActionResult OurTeamPage()
+        {
+            var ourTeam = _ourTeamRepo.GetAll();
+            return View(ourTeam);
+        }
         public ActionResult Footer(bool isContactUsPage)
         {
             if (isContactUsPage)
@@ -98,8 +118,26 @@ namespace GoldenChicken.Web.Controllers
         [Route("Gallery")]
         public ActionResult GalleryPage()
         {
-            var galleryContent = _galleryRepo.GetAll();
-            return View(galleryContent);
+            var images = _galleryRepo.GetAll();
+            var videos = _galleryVideosRepo.GetAll();
+            var vm = new GalleryPageViewModel()
+            {
+                Images = images,
+                Videos = videos
+            };
+            return View(vm);
+        }
+        [Route("Certificates")]
+        public ActionResult Certificates()
+        {
+            var certificates = _certificatesRepo.GetAll();
+            return View(certificates);
+        }
+        [Route("Foods")]
+        public ActionResult Foods()
+        {
+            var foodGallery = _foodGalleriesRepo.GetAll();
+            return View(foodGallery);
         }
         [Route("AboutUs")]
         public ActionResult About()

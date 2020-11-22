@@ -7,6 +7,7 @@ using GoldenChicken.Infrastructure.Repositories;
 using GoldenChicken.Core.Models;
 using System.Net;
 using System.IO;
+using GoldenChicken.Infrastructure.Helpers;
 
 namespace GoldenChicken.Web.Areas.Admin.Controllers
 {
@@ -18,16 +19,13 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
         {
             _repo = repo;
         }
-        public ActionResult Index(int foodId)
+        public ActionResult Index()
         {
-            ViewBag.FoodName = _repo.GetFoodName(foodId);
-            ViewBag.FoodId = foodId;
-            return View(_repo.GetFoodGalleries(foodId));
+            return View(_repo.GetAll());
         }
 
-        public ActionResult Create(int foodId)
+        public ActionResult Create()
         {
-            ViewBag.FoodId = foodId;
             return PartialView();
         }
         [HttpPost]
@@ -39,15 +37,24 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
                 #region Upload Image
                 if (Image != null)
                 {
+                    // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(Image.FileName);
-                    Image.SaveAs(Server.MapPath("/Files/FoodImages/FoodGallery/" + newFileName));
+                    Image.SaveAs(Server.MapPath("/Files/FoodImages/Temp/" + newFileName));
+                    // Resize Image
+                    ImageResizer image = new ImageResizer(800, 600, true);
+                    image.Resize(Server.MapPath("/Files/FoodImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/FoodImages/" + newFileName));
+
+                    // Deleting Temp Image
+                    System.IO.File.Delete(Server.MapPath("/Files/FoodImages/Temp/" + newFileName));
+
                     foodGallery.Image = newFileName;
                 }
                 #endregion
                 _repo.Add(foodGallery);
-                return RedirectToAction("Index", new { foodId = foodGallery.FoodId });
+                return RedirectToAction("Index");
             }
-            ViewBag.FoodId = foodGallery.FoodId;
+            //ViewBag.FoodId = foodGallery.FoodId;
             return View(foodGallery);
         }
 
@@ -74,16 +81,23 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
                 #region Upload Image
                 if (Image != null)
                 {
-                    if (System.IO.File.Exists(Server.MapPath("/Files/FoodImages/FoodGallery/" + foodGallery.Image)))
-                        System.IO.File.Delete(Server.MapPath("/Files/FoodImages/FoodGallery/" + foodGallery.Image));
-
+                    if (System.IO.File.Exists(Server.MapPath("/Files/FoodImages/" + foodGallery.Image)))
+                        System.IO.File.Delete(Server.MapPath("/Files/FoodImages/Temp/" + foodGallery.Image));
+                    // Saving Temp Image
                     var newFileName = Guid.NewGuid() + Path.GetExtension(Image.FileName);
-                    Image.SaveAs(Server.MapPath("/Files/FoodImages/FoodGallery/" + newFileName));
+                    Image.SaveAs(Server.MapPath("/Files/FoodImages/Temp/" + newFileName));
+                    // Resize Image
+                    ImageResizer image = new ImageResizer(800, 600, true);
+                    image.Resize(Server.MapPath("/Files/FoodImages/Temp/" + newFileName),
+                        Server.MapPath("/Files/FoodImages/" + newFileName));
+
+                    // Deleting Temp Image
+                    System.IO.File.Delete(Server.MapPath("/Files/FoodImages/Temp/" + newFileName));
                     foodGallery.Image = newFileName;
                 }
                 #endregion
                 _repo.Update(foodGallery);
-                return RedirectToAction("Index", new { foodId = foodGallery.FoodId });
+                return RedirectToAction("Index");
             }
             return View(foodGallery);
         }
@@ -106,9 +120,8 @@ namespace GoldenChicken.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var foodId = _repo.Get(id).FoodId;
             _repo.Delete(id);
-            return RedirectToAction("Index", new { foodId });
+            return RedirectToAction("Index");
         }
     }
 }

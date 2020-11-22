@@ -9,19 +9,17 @@ namespace GoldenChicken.Core.Models
     {
         public int Id { get; set; }
         [Display(Name = "نام")]
-        public string Name { get; set; }
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        public string Title { get; set; }
         [Display(Name = "نقش")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string Role { get; set; }
         [Display(Name = "تصویر")]
         public string Image { get; set; }
-        [Display(Name = "لینک فیسبوک")]
-        public string Facebook { get; set; }
-        [Display(Name = "لینک تویتر")]
-        public string Twitter { get; set; }
-        [Display(Name = "لینک گوگل پلاس")]
-        public string Google { get; set; }
-        [Display(Name = "لینک لینکدین")]
-        public string Linkedin { get; set; }
+        [Display(Name = "توضیح")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [DataType(DataType.MultilineText)]
+        public string Description { get; set; }
         public string InsertUser { get; set; }
         public DateTime? InsertDate { get; set; }
         public string UpdateUser { get; set; }
